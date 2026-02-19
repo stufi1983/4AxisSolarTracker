@@ -72,7 +72,6 @@ LiquidCrystal lcd(rs, en, d4, d5, d6, d7);
 float gyroXoffset = 0, gyroYoffset = 0, gyroZoffset = 0;
 
 void calibrateMPU6050() {
-  return;
   const int samples = 1000;
   long gx = 0, gy = 0, gz = 0;
 
@@ -104,7 +103,6 @@ void calibrateMPU6050() {
 }
 
 bool initMPU6050() {
-  return true;
   Wire.beginTransmission(MPU_ADDR);
   Wire.write(0x6B);  // PWR_MGMT_1 register
   Wire.write(0);     // Wake up MPU-6050
@@ -493,7 +491,7 @@ bool lookupEEPROM(byte hourTarget, float &x, float &y) {
 }
 
 ///MPU
-void readMPU6050() { return;
+void readMPU6050() { 
   Wire.beginTransmission(MPU_ADDR);
   Wire.write(0x3B);  // Starting register for accelerometer
   Wire.endTransmission(false);
@@ -527,7 +525,7 @@ void readMPU6050() { return;
   gyroZ = gyroZ_raw / 131.0 - gyroZoffset;
 }
 
-void updateAngles() { return;
+void updateAngles() { 
   unsigned long currentTime = millis();
   dt = (currentTime - lastTime) / 1000.0;
   lastTime = currentTime;
